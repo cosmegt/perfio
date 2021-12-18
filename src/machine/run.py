@@ -7,5 +7,5 @@ class Run():
     @staticmethod
     def return_all(command):
         arr = command.split(' ', 1)
-        result = subprocess.run(arr, stdout=subprocess.PIPE)
+        result = subprocess.run(arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         return result.stdout.decode('utf-8')
