@@ -44,7 +44,7 @@ class Pacman():
         def check_manager(self):
                 result = ""
                 print(self._distro)
-                if self._distro[0] == "CentOS Linux":
+                if "CentOS" in self._distro[0]:
                         result = "yum"
                 else:
                         exit("Unsupported Linux distribution.")
