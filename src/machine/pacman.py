@@ -43,11 +43,11 @@ class Pacman():
         
         def check_manager(self):
                 result = ""
-                print(self._distro)
                 if "CentOS" in self._distro[0]:
                         result = "yum"
                 else:
                         exit("Unsupported Linux distribution.")
+                print(result)
                 self._manager = result
 
 
@@ -58,7 +58,7 @@ class Pacman():
                         exit("You need to have root privilages to run this program. \nPlease try again using sudo. Exiting.")
                         
                 # Check the package manager
-                self.check_manager()
+                manager = self.check_manager()
 
                 # Check necessary packages are installed, if not install them
                 fio = self.check_installed("fio")
