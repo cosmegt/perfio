@@ -1,8 +1,7 @@
 #pacman.py - Package Manager
 #Things that have to be done:
         #Check if packages installed
-        #If they're not installed, install them
-        #Delete pacakges after we're done with them?
+        #If they're not installed, ask to install them
         #Check the distribution of this system
 #See LICENSE
 
@@ -34,11 +33,11 @@ class Pacman():
 
         # ---- OS Queries ----
         def check_installed(self, program):
-                program = Run.return_all("which " + program)
-                if program:
-                        return program
+                check_program = Run.return_all("which " + program)
+                if check_program:
+                        return check_program
                 else:
-                        return False
+                        exit("Unable to run, you're missing " + program  + " package. Please run " + self._manager + "install fio")
 
         
         def check_manager(self): #Note, this might be wrong. Possibly test in the future on other distros.
@@ -58,10 +57,6 @@ class Pacman():
                 result = self.check_installed(result)
                 self._manager = result
 
-        def install_program(self, program):
-                try:
-                        program = Run.return_all(self._manager + " " + program) #should be yum blah
-
 
 
         def sanity(self):
@@ -75,3 +70,6 @@ class Pacman():
                 # Check necessary packages are installed, if not install them
                 fio = self.check_installed("fio")
                 smartctl = self.check_installed("smartctl")
+
+                self._programs.append(fio)
+                self._programs.append(smartctl)

@@ -7,14 +7,17 @@
         #Parse FIO/etc... results to some html file     -- visualizer class     v
 # See LICENSE
 from machine.pacman import Pacman
+from gui.gui import Gui
 
 def main(): 
         #define all classes
-        pacman = Pacman()
-
+        pacman  = Pacman()
+        gui     = Gui()
         #OS sanity check
         pacman.sanity()
 
+        #Start GUI
+        gui.start()
 
 
 if __name__ == "__main__":
